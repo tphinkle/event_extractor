@@ -1,0 +1,62 @@
+#include "load_file.h"
+
+#include <iostream>
+
+#include <QString>
+#include <QStringList>
+#include <QFile>
+#include <QTextStream>
+
+#include "atf_file.h"
+
+void Load_File::Load_File(QString filename)
+{
+    QString filetype = GetFileType(filename);
+
+    if(filetype == "atf")
+    {
+        Load_File_atf(filename);
+    }
+
+    return;
+}
+
+QString Load_File::GetFileType(QString filename)
+{
+    QStringList file_name_parts = filename.split(".");
+    QString fileextension = file_name_parts[file_name_parts.size() - 1];
+
+    return fileextension;
+}
+
+void Load_File::Load_File_atf(QString filename)
+{
+    QFile file(filename);
+    file.open(QIODevice::ReadOnly);
+
+    QTextStream file_stream(&file);
+
+
+    Skip_Lines(file_stream, ATF_File::column_label_line_);
+
+
+
+    return;
+}
+
+void Load_File::Skip_Lines(QTextStream& stream, int lines)
+{
+
+    for(int i = 0; i < lines; i++)
+    {
+        stream.readLine();
+    }
+
+    return;
+}
+
+void Load_File::Move_Data_From_ATF_To_Memory()
+{
+
+    return;
+}

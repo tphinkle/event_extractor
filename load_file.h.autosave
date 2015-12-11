@@ -1,0 +1,29 @@
+#ifndef LOAD_FILE_H
+#define LOAD_FILE_H
+
+class QString;
+class QFile;
+class QTextStream;
+
+class Load_File
+{
+signals:
+    
+    
+private:
+    void Load_File(QString filename);
+
+    void Load_File_atf(QString filename);
+
+    QString GetFileType(QString filename);
+
+    void Move_Data_From_ATF_To_Memory();
+
+    void Skip_Lines(QTextStream& stream, int lines);
+public:
+    
+    
+}
+
+
+#endif // LOAD_FILE_H
